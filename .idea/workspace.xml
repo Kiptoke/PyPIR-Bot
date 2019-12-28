@@ -84,6 +84,9 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="1214" y="332" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577395148369">
       <screen x="0" y="0" width="1920" height="1050" />
