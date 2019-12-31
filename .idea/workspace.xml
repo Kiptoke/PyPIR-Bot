@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f46da115-3a88-4ea3-b2d5-c051757c9c12" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +23,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
     <configuration name="pypir" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -123,10 +124,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="936" height="280" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1577511655953" />
-    <state x="922" y="172" key="SettingsEditor" timestamp="1576815505267">
+    <state x="922" y="172" key="SettingsEditor" timestamp="1577767539878">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="922" y="172" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1576815505267" />
+    <state x="922" y="172" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1577767539878" />
     <state x="1032" y="262" key="Vcs.Push.Dialog.v2" timestamp="1577512680632">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
