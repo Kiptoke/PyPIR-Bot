@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f46da115-3a88-4ea3-b2d5-c051757c9c12" name="Default Changelist" comment="" />
+    <list default="true" id="f46da115-3a88-4ea3-b2d5-c051757c9c12" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +75,14 @@
       <option name="presentableId" value="Default" />
       <updated>1574908847397</updated>
     </task>
+    <task id="LOCAL-00001" summary="whoops">
+      <created>1577512677541</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577512677541</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -85,17 +95,18 @@
     </todo-panel>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="whoops" />
+    <option name="LAST_COMMIT_MESSAGE" value="whoops" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1214" y="332" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577395148369">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="1214" y="332" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1577395148369" />
-    <state x="1021" y="124" key="CommitChangelistDialog2" timestamp="1577512403853">
+    <state x="1021" y="124" key="CommitChangelistDialog2" timestamp="1577512675910">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1021" y="124" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1577512403853" />
+    <state x="1021" y="124" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1577512675910" />
     <state width="936" height="280" key="GridCell.Tab.0.bottom" timestamp="1577511655953">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -116,13 +127,13 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="922" y="172" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1576815505267" />
-    <state x="1032" y="262" key="Vcs.Push.Dialog.v2" timestamp="1577512366181">
+    <state x="1032" y="262" key="Vcs.Push.Dialog.v2" timestamp="1577512680632">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1032" y="262" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1577512366181" />
-    <state x="656" y="350" key="com.intellij.ide.util.TipDialog" timestamp="1577396368059">
+    <state x="1032" y="262" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1577512680632" />
+    <state x="656" y="350" key="com.intellij.ide.util.TipDialog" timestamp="1577765105883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="656" y="350" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1577396368059" />
+    <state x="656" y="350" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1577765105883" />
   </component>
 </project>

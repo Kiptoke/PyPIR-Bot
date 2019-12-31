@@ -100,7 +100,3 @@ async def make_guess(ctx, input):
     pass
 
 bot.run(token)
-
-
-
-
