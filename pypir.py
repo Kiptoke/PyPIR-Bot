@@ -17,9 +17,10 @@ logging.basicConfig(level=logging.INFO)
 
 load_dotenv()
 
-#client = discord.Client()
 bot = commands.Bot(command_prefix='$')
 token = os.getenv('DISCORD_TOKEN')
+
+guesses = {}
 
 gameActive = False
 channel = 0
@@ -62,23 +63,22 @@ async def link(ctx, url):
 
         page = requests.get(url,headers=user_agent)
         print(page.status_code)
-        soup = BeautifulSoup(page.content, 'html.parser')
+        soup = BeautifulSoup(page.content,'html.parser')
+        soup2 = BeautifulSoup(soup.prettify(),"html.parser")
 
-        title = soup.find(id="productTitle")
-        print(title)
+        title = soup2.find(id="productTitle")
         title = title.get_text().strip()
 
-        #price = soup.find(id="price_inside_buybox")
-        #print(price)
-        #price = float(price.get_text()[1:])
+        price = soup2.find(id="price_inside_buybox")
+        price = float(price.get_text().strip()[1:])
 
         await ctx.send("Alright! Let's play \"The Price is Right\" with this item and price:")
         await ctx.send(title)
-        #await ctx.send(str(price))
+        await ctx.send(str(price))
 
         print("game started:")
         print(title)
-        #print(str(price))
+        print(str(price))
 
         await channel.send(ctx.author.mention + " has sent me a link! Let's play!")
         await channel.send("The item in question is the: ")
@@ -94,26 +94,68 @@ async def link(ctx, url):
 @bot.command(name = 'guess')
 async def make_guess(ctx, input):
     global gameActive
-
-    print("make_guess called, num = " + str(price) + " guess = " + input)
+    global guesses
 
     if(ctx.message.channel == channel):
         if gameActive:
-            if(float(input) > price):
-                await ctx.send("Too big! Guess lower!")
-            elif(float(input) < price):
-                await ctx.send("Too low! Guess higher!")
-            else:
-                await ctx.send("That's it!")
-                gameActive = False
+            print(ctx.author.name + " guess = " + input)
+            guesses[ctx.author] = float(input)
         else:
             await ctx.send("Game not active! Type `$init` to start!")
 
     pass
 
+@bot.command(name = 'stop')
+async def stop_game(ctx):
+    global gameActive
+    global guesses
+    global price
+
+    closest = 0.0
+    closestUser = ''
+
+    if(ctx.message.channel == channel):
+        if gameActive:
+            for user in guesses:
+                print("user: " + user.name + " guess: " + str(guesses[user]))
+                if(guesses[user] > closest and guesses[user] <= price):
+                    closest = guesses[user]
+                    closestUser = user.mention
+
+            await ctx.send(closestUser + " wins with a guess of " + str(closest))
+            await ctx.send("The correct price was: " + str(price))
+        else:
+            await ctx.send("Game not active! Type `$init` to start!")
+
+    pass
+
+@bot.command(name = "rules")
+async def rules(ctx):
+    string = """
+    **How to Play:** ***Python Price is Right***\n
+One person will initiate PyPIR Bot (that's me) and will submit an Amazon product.
+You'll then be told what that product is. Your goal is to guess how much it costs to buy it.
+However, you **cannot** guess above the actual price of the product, or else you lose.
+    """
+
+    await ctx.send(string)
+
+    pass
+
 @bot.command(name = 'cmds')
 async def commands(ctx):
-    await ctx.author.send("Testing! Hello there!")
+    string = """
+    ----------**PyPIR BOT COMMANDS**----------\n
+`$init` - begins a session of the Price is Right
+`$link [amazon url]` - sends me an Amazon product link (in DM only)
+`$guess [number]` - Make a guess
+`$cmds` - Lists all commands.
+`$rules` - Prints out the rules of Python Price is Right.
+`$stop` - Ends the guessing period, and calculates a winner.
+    """
+
+    await ctx.author.send(string)
+
     pass
 
 bot.run(token)
