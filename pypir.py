@@ -13,6 +13,13 @@ from dotenv import load_dotenv
 
 logging.basicConfig(level=logging.INFO)
 
+# HELPER FUNCTIONS
+
+def launder(price):
+    newPrice = price
+    newPrice = newPrice.replace(",","").replace("$", "")
+    return newPrice
+
 # MAIN BODY CODE
 
 load_dotenv()
@@ -52,10 +59,16 @@ async def initialize(ctx):
 
     pass
 
+@bot.command(name = 'clean')
+async def clean(ctx, price):
+    await ctx.send(launder(price))
+
 @bot.command(name = 'link')
 async def link(ctx, url):
+    global gameActive
+
     print(url)
-    if(ctx.message.channel.type == discord.ChannelType.private):
+    if(ctx.message.channel.type == discord.ChannelType.private and gameActive):
         global title
         global price
 
@@ -70,7 +83,7 @@ async def link(ctx, url):
         title = title.get_text().strip()
 
         price = soup2.find(id="price_inside_buybox")
-        price = float(price.get_text().strip()[1:])
+        price = float(launder(price.get_text().strip()))
 
         await ctx.send("Alright! Let's play \"The Price is Right\" with this item and price:")
         await ctx.send(title)
@@ -80,15 +93,17 @@ async def link(ctx, url):
         print(title)
         print(str(price))
 
-        await channel.send(ctx.author.mention + " has sent me a link! Let's play!")
-        await channel.send("The item in question is the: ")
-        await channel.send("**" + title + "**")
-        await channel.send("Type `$guess [number]` to make a guess!")
+        await channel.send(ctx.author.mention + " has sent me a link! Let's play!\n"+
+                           "The item in question is the: \n"+
+                           "**" + title + "**\n"+
+                           "Type `$guess [number]` to make a guess!")
 
+    elif(gameActive):
+        await ctx.send("""Hey " + ctx.author.mention + ", that's not where the link goes!\n
+        Type `$link` with your amazon link in a direct message to me!
+        *PS: you should probably pick a different link...*""")
     else:
-        await ctx.send("Hey " + ctx.author.mention + ", that's not where the link goes!")
-        await ctx.send("Type `$link` with your amazon link in a direct message to me!")
-        await ctx.send("*PS: you should probably pick a different link...*")
+        await ctx.send("You gotta start the game first! Type `$init` to start one.")
 
 
 @bot.command(name = 'guess')
@@ -98,8 +113,8 @@ async def make_guess(ctx, input):
 
     if(ctx.message.channel == channel):
         if gameActive:
-            print(ctx.author.name + " guess = " + input)
-            guesses[ctx.author] = float(input)
+            print(ctx.author.name + " guess = " + launder(input))
+            guesses[ctx.author] = float(launder(input))
         else:
             await ctx.send("Game not active! Type `$init` to start!")
 
@@ -122,8 +137,10 @@ async def stop_game(ctx):
                     closest = guesses[user]
                     closestUser = user.mention
 
-            await ctx.send(closestUser + " wins with a guess of " + str(closest))
-            await ctx.send("The correct price was: " + str(price))
+            if closestUser == '':
+                await ctx.send("Nobody wins!\nThe correct price was: " + str(price))
+            else:
+                await ctx.send(closestUser + " wins with a guess of " + str(closest) + "\nThe correct price was: " + str(price))
         else:
             await ctx.send("Game not active! Type `$init` to start!")
 
